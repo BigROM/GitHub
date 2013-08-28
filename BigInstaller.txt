@@ -1,0 +1,1525 @@
+﻿@echo off
+title BigInstaller
+
+color f2
+ver
+
+cls
+
+
+:MAIN
+@echo off
+echo.
+echo.
+echo            888888b.  d8b        8888888b.  .d88888b. 888b     d888 
+echo            888  "88b Y8P        888   Y88bd88P" "Y88b8888b   d8888 
+echo            888  .88P            888    888888     88888888b.d88888 
+echo            8888888K. 888 .d88b. 888   d88P888     888888Y88888P888 
+echo            888  "Y88b888d88P"88b8888888P" 888     888888 Y888P 888 
+echo            888    888888888  888888 T88b  888     888888  Y8P  888 
+echo            888   d88P888Y88b 888888  T88b Y88b. .d88P888   "   888 
+echo            8888888P" 888 "Y88888888   T88b "Y88888P" 888       888 
+echo                              888                                   
+echo                         Y8b d88P                                   
+echo                          "Y88P" 
+echo.    
+color e5
+echo.
+echo                       !!!    SELECT A LENGUAGE    !!!
+
+echo.
+
+echo 1.English
+echo.
+
+echo 2.Italian 
+echo.
+echo 3.Spanish
+echo.
+echo.
+
+set /p "Scelta=Digit a command and press enter: "
+
+IF "%Scelta%"=="1" GOTO RICHIESTA
+IF "%Scelta%"=="2" GOTO RICHIESTITA
+IF "%Scelta%"=="3" GOTO RICHIESPA
+IF "%Scelta%"=="readme" GOTO README
+IF "%Scelta%"=="README" GOTO README
+IF "%Scelta%"=="README.txt" GOTO README
+IF "%Scelta%"=="README.TXT" GOTO README
+IF "%Scelta%"=="readme.txt" GOTO README
+IF "%Scelta%"=="give me an egg" GOTO EASTERENG
+IF "%Scelta%"=="GIVE ME AN EGG" GOTO EASTERENG
+IF "%Scelta%"=="GIVEMEANEGG" GOTO EASTERENG
+IF "%Scelta%"=="GIVE ME TWO EGGS" GOTO EASTEREGGS
+IF "%Scelta%"=="give me two eggs" GOTO EASTEREGGS
+IF "%Scelta%"=="GIVEMETWOEGGS" GOTO EASTEREGGS
+IF "%Scelta%"=="givemeanegg" GOTO EASTERENG
+IF "%Scelta%"=="givemetwoeggs" GOTO EASTEREGGS
+IF "%Scelta%"=="main" GOTO MAIN
+IF "%Scelta%"=="MAIN" GOTO MAIN
+ver
+
+color a3
+echo.
+
+echo.
+
+echo Not found!
+
+echo.
+
+echo Press a key...
+
+pause > nul
+
+goto MAIN
+cls
+
+
+
+
+
+:RICHIESTA
+@echo off
+color b4
+set PATH=%CD%;%PATH%;
+echo.
+echo            ########  ####  ######   ########   #######  ##     ##
+echo            ##     ##  ##  ##    ##  ##     ## ##     ## ###   ###
+echo            ##     ##  ##  ##        ##     ## ##     ## #### ####
+echo            ########   ##  ##   #### ########  ##     ## ## ### ##
+echo            ##     ##  ##  ##    ##  ##   ##   ##     ## ##     ##
+echo            ##     ##  ##  ##    ##  ##    ##  ##     ## ##     ##
+echo            ########  ####  ######   ##     ##  #######  ##     ##
+echo.                                
+echo.
+
+echo 1.Unlock the Bootloader 
+
+echo.
+
+echo 2.Flash TWRP, download and install BigROM and Gapps
+echo.
+
+echo 3.BigROM Team
+echo.
+
+echo 4.BigROM Website
+
+echo.
+echo 5.Backup and Restore
+echo.
+
+echo 6.About
+echo.
+
+echo 7.Exit
+
+echo.
+set /p "Scelta=Digit a command and press Enter: " 
+
+cls
+
+IF "%Scelta%"=="1" GOTO UNO
+
+IF "%Scelta%"=="2" GOTO DUE
+
+IF "%Scelta%"=="3" GOTO TRE
+
+IF "%Scelta%"=="4" GOTO QUATTRO
+
+IF "%Scelta%"=="5" GOTO CINQUE
+
+IF "%Scelta%"=="6" GOTO SEI
+
+IF "%Scelta%"=="7" GOTO SETTE
+
+IF "%Scelta%"=="readme" GOTO README
+IF "%Scelta%"=="README" GOTO README
+IF "%Scelta%"=="README.txt" GOTO README
+IF "%Scelta%"=="readme.txt" GOTO README
+IF "%Scelta%"=="give me an egg" GOTO EASTERENG
+IF "%Scelta%"=="GIVE ME AN EGG" GOTO EASTERENG
+IF "%Scelta%"=="GIVEMEANEGG" GOTO EASTERENG
+IF "%Scelta%"=="GIVE ME TWO EGGS" GOTO EASTEREGGS
+IF "%Scelta%"=="give me two eggs" GOTO EASTEREGGS
+IF "%Scelta%"=="GIVEMETWOEGGS" GOTO EASTEREGGS
+IF "%Scelta%"=="givemeanegg" GOTO EASTERENG
+IF "%Scelta%"=="givemetwoeggs" GOTO EASTEREGGS
+IF "%Scelta%"=="README.TXT" GOTO README
+IF "%Scelta%"=="main" GOTO MAIN
+IF "%Scelta%"=="MAIN" GOTO MAIN
+color f0
+echo.
+
+echo.
+
+echo Not Found!
+
+echo.
+
+echo Press a key...
+
+pause > nul
+
+cls
+
+goto RICHIESTA
+
+
+
+:UNO
+color b6
+
+echo.
+
+echo Is USB Debugging on?
+
+echo If yes press a key...
+
+pause > nul
+
+CD/BigInstaller/Android/
+fastboot reboot-bootloader
+
+fastboot oem unlock
+
+echo.
+
+echo Ok, press a key...
+
+pause > nul
+
+goto RICHIESTA
+ 
+
+
+:DUE
+color e5
+
+echo.
+
+echo If you're sure press a key...
+
+pause > nul
+
+echo Downloading the ROM...
+
+start C:/BigInstaller/Files/BigUp.exe 
+echo.
+
+echo When the download is completed press a key...
+
+pause > nul
+
+CD/BigInstaller/Android
+
+echo IS DEBUG USB ON?
+
+echo If yes press a key...
+
+pause > nul
+echo Flashing TWRP...
+
+adb reboot bootloader
+fastboot flash recovery openrecovery-twrp-2.6.0.0-grouper.img
+
+adb reboot bootloader
+
+pause > nul
+start C:\BigInstaller\Android\First_time_config.exe
+echo Configure this and the press a key...
+pause > nul
+start C:\BigInstaller\Android\Desktop Flasher.exe
+echo Drag & Drop ROM.zip into Desktop Flasher
+pause > nul
+
+echo All done, enjoy the BigROM :)
+
+echo Thanks for installing!
+echo Press a key...
+
+pause > nul
+
+goto RICHIESTA
+
+
+
+
+:TRE
+color 0c
+
+echo.
+
+echo 1.Matteo Lobello 
+echo.
+
+echo 2.Luca Pensabene
+
+echo.
+
+echo 3.Arnaldo Ciriello
+
+echo.
+
+echo 4.Nicola Lonoce
+
+echo.
+
+echo 5.Moreno Saragoni 
+
+echo.
+
+echo 6.Francesco Colella
+
+echo.
+
+echo 7.Back
+
+echo.
+
+set /p "Scelta=Digit a command and push Enter to go to his Google+ profile: "
+echo.
+
+IF "%Scelta%"=="1" GOTO MATTEO
+
+IF "%Scelta%"=="2" GOTO LUCA
+
+IF "%Scelta%"=="3" GOTO ARNALDO
+
+IF "%Scelta%"=="4" GOTO NICOLA
+
+IF "%Scelta%"=="5" GOTO MORENO
+
+IF "%Scelta%"=="6" GOTO FRANCESCO
+
+IF "%Scelta%"=="7" GOTO RICHIESTA
+color a3
+
+echo.
+
+echo.
+
+echo Not Found!
+
+echo.
+
+echo Press a key...
+
+pause > nul 
+
+goto RICHIESTA
+
+echo.
+
+
+
+:QUATTRO
+color a2
+echo.
+echo Opening browser...
+start "" "https://www.bigrom.altervista.org"
+
+echo.
+echo Press a key to go back...
+pause > nul
+goto RICHIESTA
+
+:CINQUE
+ver
+
+color a1
+
+echo.
+
+echo 1.Backup apps and data
+
+echo.
+
+echo 2.Restore
+echo.
+echo 3.Back
+
+echo.
+
+set /p "Scelta=Digit a command and push Enter: "
+
+IF "%Scelta%"=="1" GOTO BACKUP
+
+IF "%Scelta%"=="2" GOTO RESTORE
+
+IF "%Scelta%"=="3" GOTO RICHIESTA
+color a3
+echo.
+
+echo.
+
+echo Not Found!
+
+echo.
+
+echo Press a key...
+
+pause > nul
+
+cls
+
+goto CINQUE
+
+
+
+:BACKUP
+
+color b5
+
+echo.
+
+echo Is the USB Debugging enabled? 
+echo If yes press a key...
+
+pause > nul
+
+echo Backup in progress, wait...
+
+cd\BigInstaller\Android\
+
+adb backup -apk -shared -all -f backup.ab
+
+echo Ok, now press a key to go back...
+
+pause > nul
+
+goto RICHIESTA
+
+
+
+:RESTORE
+
+COLOR f5
+
+echo.
+
+echo Ok, wait...
+
+cd\BigInstaller\Android\
+
+adb restore backup.ab
+
+echo Ok, now press a key to go back...
+
+pause > nul
+
+goto RICHIESTA
+
+
+:SEI
+color e9
+echo.
+echo.
+echo                   Did you find bugs? Do you want to contribute us?
+echo.
+echo                                   Problems?
+echo.
+echo                              Send us an e-Mail to     
+echo.
+echo                            bigromandroid@gmail.com
+echo.
+echo                           or contact us via Google +
+echo.
+echo.
+echo                    Code on GitHub (http://github.com/BigROM/)
+echo.
+echo.
+echo                                 Version 2.0
+echo.
+echo                              # # # # # # # # # #
+echo                              #                 #
+echo                              #  THANK YOU :)   #
+echo                              #                 #
+echo                              # # # # # # # # # # 
+echo.
+echo Press a key to go back...
+pause > nul
+
+cls
+
+goto RICHIESTA
+
+
+
+
+
+
+
+
+:SETTE
+color e2
+
+echo.
+
+echo Bye! :)
+echo.
+
+echo Press a key to exit...
+
+pause > nul
+
+exit 
+
+
+
+:MATTEO
+echo Opening the browser...
+
+start "" "https://plus.google.com/102310425733172749149"
+
+echo Press a key to go back...
+
+pause > nul
+
+goto RICHIESTA
+
+
+:LUCA
+echo Opening the browser...
+
+start "" "https://plus.google.com/117718648465129136256/posts"
+
+echo Press a key to go back...
+
+pause > nul
+
+goto RICHIESTA
+
+
+
+:ARNALDO
+
+echo Opening the browser...
+
+start "" "https://plus.google.com/100182969998804856383/posts"
+
+echo Press a key to go back...
+
+pause > nul
+
+goto RICHIESTA
+
+
+
+:NICOLA 
+echo Opening the browser...
+
+start "" "https://plus.google.com/110283931582991364478/posts"
+
+echo Press a key to go back...
+
+pause > nul
+
+goto RICHIESTA
+
+
+
+:MORENO
+
+echo Opening the browser...
+
+start "" "https://plus.google.com/115779171785765882236/posts"
+
+echo Press a key to go back...
+
+pause > nul
+
+goto RICHIESTA
+
+
+
+:FRANCESCO
+
+echo Opening the browser...
+
+start "" "https://plus.google.com/106817200857142105707/posts"
+
+echo Press a key to go back...
+
+pause > nul
+
+goto RICHIESTA
+
+
+
+
+
+
+
+
+
+
+
+
+@echo off
+title BigROM Installer
+
+color f2
+
+cls
+
+:RICHIESTITA
+@echo off
+color b4
+set PATH=%CD%;%PATH%;
+echo.
+echo            ########  ####  ######   ########   #######  ##     ##
+echo            ##     ##  ##  ##    ##  ##     ## ##     ## ###   ###
+echo            ##     ##  ##  ##        ##     ## ##     ## #### ####
+echo            ########   ##  ##   #### ########  ##     ## ## ### ##
+echo            ##     ##  ##  ##    ##  ##   ##   ##     ## ##     ##
+echo            ##     ##  ##  ##    ##  ##    ##  ##     ## ##     ##
+echo            ########  ####  ######   ##     ##  #######  ##     ##
+echo.                                
+echo.
+
+echo 1.Sblocca il bootloader 
+
+echo.
+
+echo 2.Flasha la TWRP, scarica e installa la BigROM e le Gapps
+echo.
+
+echo 3.Componenti BigTeam
+echo.
+
+echo 4.Sito della BigROM
+echo.
+echo 5.Backup e Restore
+echo.
+
+echo 6.Informazioni
+echo.
+
+echo 7.Esci
+echo.
+
+set /p "Scelta=Digita un comando e premi invio: " 
+
+cls
+
+IF "%Scelta%"=="1" GOTO BOOTLOADER
+IF "%Scelta%"=="2" GOTO DUITA
+IF "%Scelta%"=="3" GOTO TRITA
+
+IF "%Scelta%"=="4" GOTO QUATTRITA
+IF "%Scelta%"=="5" GOTO CINQUITA
+IF "%Scelta%"=="6" GOTO SEITA
+
+IF "%Scelta%"=="7" GOTO SETTITA
+IF "%Scelta%"=="readme" GOTO README
+IF "%Scelta%"=="README" GOTO README
+IF "%Scelta%"=="README.txt" GOTO README
+IF "%Scelta%"=="readme.txt" GOTO README
+IF "%Scelta%"=="give me an egg" GOTO EASTERENG
+IF "%Scelta%"=="GIVE ME AN EGG" GOTO EASTERENG
+IF "%Scelta%"=="GIVEMEANEGG" GOTO EASTERENG
+IF "%Scelta%"=="GIVE ME TWO EGGS" GOTO EASTEREGGS
+IF "%Scelta%"=="give me two eggs" GOTO EASTEREGGS
+IF "%Scelta%"=="GIVEMETWOEGGS" GOTO EASTEREGGS
+IF "%Scelta%"=="givemeanegg" GOTO EASTERENG
+IF "%Scelta%"=="givemetwoeggs" GOTO EASTEREGGS
+IF "%Scelta%"=="README.TXT" GOTO README
+IF "%Scelta%"=="main" GOTO MAIN
+IF "%Scelta%"=="MAIN" GOTO MAIN
+color f0
+echo.
+
+echo.
+
+echo Non trovato!
+
+echo.
+
+echo Premi un pulsante...
+
+pause > nul
+
+cls
+
+goto MAIN
+
+:BOOTLOADER
+@echo off
+color f0
+cd\BigInstaller\Android
+echo.
+echo.
+echo.
+echo   !!!       Riavvia il dispositivo nella modalita' Fastboot,            !!!
+echo   !!!    riaccendendo il Nexus premendo il tasto ON/OFF+Volume Giu      !!!
+echo.
+echo.
+fastboot oem unlock
+pause > nul
+exit
+
+
+:DUITA
+color e5
+
+echo.
+
+echo Se sei sicuro premi un tasto...
+
+pause > nul
+
+echo Flasho la TWRP...
+
+adb reboot bootloader
+fastboot flash recovery openrecovery-twrp-2.6.0.0-grouper.img
+
+adb reboot bootloader
+
+echo Scaricando la ROM e le Gapps (premi Download)...
+
+start C:/BigInstaller/Files/BigUp.exe 
+echo.
+
+echo Quando il download è completato premi un tasto...
+pause > nul
+
+CD/BigInstaller/Android
+
+echo E'attivo il Debug USB?
+echo Se si premi un tasto...
+pause > nul
+start C:\BigInstaller\Android\First_time_config.exe
+echo Configura e poi premi un tasto...
+pause > nul
+start C:\BigInstaller\Android\Desktop Flasher.exe
+echo Fai il Drag & Drop ROM.zip in Desktop Flasher...
+pause > nul
+
+echo Fatto. Goditi la BigROM :)
+
+echo Grazie per aver installato!
+echo Premi un tasto...
+
+pause > nul
+
+goto RICHIESTITA
+
+:TRITA
+color 0c
+
+echo.
+
+echo 1.Matteo Lobello 
+echo.
+
+echo 2.Luca Pensabene
+
+echo.
+
+echo 3.Arnaldo Ciriello
+
+echo.
+
+echo 4.Nicola Lonoce
+
+echo.
+
+echo 5.Moreno Saragoni 
+
+echo.
+
+echo 6.Francesco Colella
+
+echo.
+
+echo 7.Indietro
+
+echo.
+
+set /p "Scelta=Digita un comando e premi Enter per andare al rispettivo progilo Google+: "
+echo.
+
+IF "%Scelta%"=="1" GOTO MATTEOITA
+
+IF "%Scelta%"=="2" GOTO LUCA
+ITA
+IF "%Scelta%"=="3" GOTO ARNALDOITA
+IF "%Scelta%"=="4" GOTO NICOLAITA
+IF "%Scelta%"=="5" GOTO MORENOITA
+IF "%Scelta%"=="6" GOTO FRANCESCO
+ITA
+IF "%Scelta%"=="7" GOTO RICHIESTITA
+color a3
+
+echo.
+
+echo.
+
+echo Non trovato!
+
+echo.
+
+echo Premi un tasto...
+
+pause > nul 
+
+goto RICHIESTITA
+
+echo.
+
+
+
+:QUATTRITA
+color a2
+echo.
+echo Aprendo il browser...
+start "" "https://www.bigrom.altervista.org"
+
+echo.
+echo Premi un tasto per continuare...
+pause > nul
+goto RICHIESTITA
+
+:CINQUITA
+color a1
+
+echo.
+
+echo 1.Backup apps e data
+
+echo.
+
+echo 2.Ripristino
+echo.
+echo 3.Indietro
+
+echo.
+
+set /p "Scelta=Digita un comando e premi invio: "
+
+IF "%Scelta%"=="1" GOTO BACKUPITA
+IF "%Scelta%"=="2" GOTO RESTOREITA
+IF "%Scelta%"=="3" GOTO RICHIESTITA
+color a3
+echo.
+
+echo.
+
+echo Non trovato!
+
+echo.
+
+echo Premi un tasto...
+
+pause > nul
+
+cls
+
+goto CINQUITA
+
+
+
+:BACKUPITA
+color b5
+
+echo.
+
+echo E' attivo il debug USB?
+echo Se si premi un tasto...
+pause > nul
+
+echo Creando il backup...
+
+cd\BigInstaller\Android\
+
+adb backup -apk -shared -all -f backup.ab
+
+echo Ok, fatto...
+
+pause > nul
+
+goto RICHIESTITA
+
+
+
+:RESTOREITA
+COLOR f5
+
+echo.
+
+echo Ok, aspetta...
+
+cd\BigInstaller\Android\
+
+adb restore backup.ab
+
+echo Fatto, premi un tasto per continuare...
+
+pause > nul
+
+goto RICHIESTITA
+
+
+:SEITA
+color e9
+echo.
+echo       Hai trovato bugs? Vuoi contibuire allo sviluppo della ROM?
+echo.
+echo                           Problemi?
+echo.
+echo           Invia una e-Mail a: bigromandroid@gmail.com
+echo.
+echo.
+echo                         Versione 2.0
+echo
+echo                       # # # # # # # # # # #
+echo.
+echo                       #   GRAZIE TANTE    #
+echo.
+echo                       # # # # # # # # # # #
+echo.
+echo Premi un tasto per andare indietro...
+pause > nul
+
+goto RICHIESTITA
+cls
+
+
+
+
+
+
+
+:SETTITA
+color e2
+
+echo.
+
+echo Ciao! :)
+echo.
+
+echo Premi un tasto per uscire...
+
+pause > nul
+
+exit 
+
+
+cls
+
+:MATTEOITA
+echo Aprendo il browser...
+
+start "" "https://plus.google.com/102310425733172749149"
+
+echo Premi un tasto per andare indietro...
+
+pause > nul
+
+goto RICHIESTITA
+
+
+:LUCAITA
+echo Aprendo il browser...
+
+start "" "https://plus.google.com/117718648465129136256/posts"
+
+echo Premi un tasto per andare indietro...
+
+pause > nul
+
+goto RICHIESTITA
+
+
+:ARNALDO
+ITA
+echo Aprendo il browser...
+
+start "" "https://plus.google.com/100182969998804856383/posts"
+
+echo Premi un tasto per andare indietro...
+
+pause > nul
+
+goto RICHIESTITA
+
+
+
+:NICOLAITA
+echo Aprendo il browser...
+
+start "" "https://plus.google.com/110283931582991364478/posts"
+
+echo Premi un tasto per andare indietro...
+
+pause > nul
+
+goto RICHIESTITA
+
+
+:MORENO
+ITA
+echo Aprendo il browser...
+
+start "" "https://plus.google.com/115779171785765882236/posts"
+
+echo Premi un tasto per andare indietro...
+
+pause > nul
+
+goto RICHIEST
+
+ITA
+
+:FRANCESCOITA
+echo Aprendo il browser...
+
+start "" "https://plus.google.com/106817200857142105707/posts"
+
+echo Premi un tasto per andare indietro...
+
+pause > nul
+
+goto RICHIESTITA
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:RICHIESPA
+@echo off
+color b4
+set PATH=%CD%;%PATH%;
+echo.
+echo            ########  ####  ######   ########   #######  ##     ##
+echo            ##     ##  ##  ##    ##  ##     ## ##     ## ###   ###
+echo            ##     ##  ##  ##        ##     ## ##     ## #### ####
+echo            ########   ##  ##   #### ########  ##     ## ## ### ##
+echo            ##     ##  ##  ##    ##  ##   ##   ##     ## ##     ##
+echo            ##     ##  ##  ##    ##  ##    ##  ##     ## ##     ##
+echo            ########  ####  ######   ##     ##  #######  ##     ##
+echo.                                
+echo.
+
+echo 1.Descubrir el bootloader 
+
+echo.
+
+echo 2.Flashar TWRP, descargar e instalar BigROM y Gapps
+echo.
+
+echo 3.Componentes BigTeam
+echo.
+
+echo 4.Sitio BigROM
+echo.
+echo 5.Backup y Restore
+echo.
+
+echo 6.Informaciones
+echo.
+
+echo 7.Sales
+echo.
+
+set /p "Scelta=Escribir un comando y pulsa enter: " 
+
+cls
+
+IF "%Scelta%"=="1" GOTO BOOTLOADERSPA
+IF "%Scelta%"=="2" GOTO DUSPA
+IF "%Scelta%"=="3" GOTO TRSPA
+
+IF "%Scelta%"=="4" GOTO QUATTRSPA
+IF "%Scelta%"=="5" GOTO CINQUSPA
+IF "%Scelta%"=="6" GOTO SESPA
+
+IF "%Scelta%"=="7" GOTO SETTSPA
+IF "%Scelta%"=="readme" GOTO README
+IF "%Scelta%"=="README" GOTO README
+IF "%Scelta%"=="README.txt" GOTO README
+IF "%Scelta%"=="readme.txt" GOTO README
+IF "%Scelta%"=="give me an egg" GOTO EASTERENG
+IF "%Scelta%"=="GIVE ME AN EGG" GOTO EASTERENG
+IF "%Scelta%"=="GIVEMEANEGG" GOTO EASTERENG
+IF "%Scelta%"=="GIVE ME TWO EGGS" GOTO EASTEREGGS
+IF "%Scelta%"=="give me two eggs" GOTO EASTEREGGS
+IF "%Scelta%"=="GIVEMETWOEGGS" GOTO EASTEREGGS
+IF "%Scelta%"=="givemeanegg" GOTO EASTERENG
+IF "%Scelta%"=="givemetwoeggs" GOTO EASTEREGGS
+IF "%Scelta%"=="README.TXT" GOTO README
+IF "%Scelta%"=="main" GOTO MAIN
+IF "%Scelta%"=="MAIN" GOTO MAIN
+color f0
+echo.
+
+echo.
+
+echo Error 404!
+
+echo.
+
+echo Pulsa un boton...
+
+pause > nul
+
+cls
+
+goto RICHIESPA
+
+:BOOTLOADERSPA
+@echo off
+title Unlock Bootloader
+color f0
+cd\BigInstaller\Android
+echo                       !  Reinice el equipo en modo Fastboot  !
+echo.
+echo.
+fastboot oem unlock
+pause > nul
+exit
+
+
+:DUSPA
+color e5
+
+echo.
+
+echo Si estas seguro, pulsa un boton...
+
+pause > nul
+
+echo Descargando ROM y Gapps (pulsa Download)...
+
+start C:/BigInstaller/Files/BigUp.exe 
+echo.
+
+echo Cuando el download es completado, pulsa un boton...
+
+pause > nul
+
+CD/BigInstaller/Android
+
+echo TWRP...
+
+adb reboot bootloader
+fastboot flash recovery openrecovery-twrp-2.6.0.0-grouper.img
+
+adb reboot bootloader
+
+echo Pulsa un boton...
+pause > nul
+echo Esta' habilitado el debug USB?
+echo Pulsa un boton...
+
+pause > nul
+start C:\BigInstaller\Android\First_time_config.exe
+echo Configurar el programa...
+pause > nul
+start C:\BigInstaller\Android\Desktop Flasher.exe
+echo Drag & Drop de ROM.zip en Desktop Flasher
+pause > nul
+
+echo Ok todo echo! Pulsa un boton :)
+pause > nul
+goto RICHIESPA
+
+:TRSPA
+color 0c
+
+echo.
+
+echo 1.Matteo Lobello 
+echo.
+
+echo 2.Luca Pensabene
+
+echo.
+
+echo 3.Arnaldo Ciriello
+
+echo.
+
+echo 4.Nicola Lonoce
+
+echo.
+
+echo 5.Moreno Saragoni 
+
+echo.
+
+echo 6.Francesco Colella
+
+echo.
+
+echo 7.Atras
+echo.
+
+set /p "Scelta=Escribir un comando y vaya a su perfil de Google+ "
+echo.
+
+IF "%Scelta%"=="1" GOTO MATTEOSPA
+IF "%Scelta%"=="2" GOTO LUCA
+SPA
+IF "%Scelta%"=="3" GOTO ARNALDOSPA
+IF "%Scelta%"=="4" GOTO NICOLASPA
+IF "%Scelta%"=="5" GOTO MORENOSPA
+IF "%Scelta%"=="6" GOTO FRANCESCO
+SPA
+IF "%Scelta%"=="7" GOTO RICHIESPA
+color a3
+
+echo.
+
+echo.
+
+echo Error 404!
+
+echo.
+
+echo Pulsa un boton...
+
+pause > nul 
+
+goto RICHIESPA
+echo.
+
+
+
+:QUATTRSPA
+color a2
+echo.
+echo Apertura del browser...
+start "" "https://www.bigrom.altervista.org"
+
+echo.
+echo Pulsa un boton...
+pause > nul
+goto RICHIESPA
+
+:CINQUSPA
+color a1
+
+echo.
+
+echo 1.Backup apps y data
+
+echo.
+
+echo 2.Ripristino
+echo.
+echo 3.Atras
+echo.
+
+set /p "Scelta=Digita un comando e premi invio: "
+
+IF "%Scelta%"=="1" GOTO BACKUPSPA
+IF "%Scelta%"=="2" GOTO RESTORESPA
+IF "%Scelta%"=="3" GOTO RICHIESPA
+color a3
+echo.
+
+echo.
+
+echo Error 404!
+
+echo.
+
+echo Pulsa un boton...
+
+pause > nul
+
+cls
+
+goto CINQUSPA
+
+
+
+:BACKUPSPA
+color b5
+
+echo.
+
+echo Es activado el debug USB?
+echo Pulsa un boton...
+pause > nul
+
+echo Creando el backup...
+
+cd\BigInstaller\Android\
+
+adb backup -apk -shared -all -f backup.ab
+
+echo Ok, echo...
+
+pause > nul
+
+goto RICHIESPA
+
+
+
+:RESTORESPA
+COLOR f5
+
+echo.
+
+echo Ok...
+
+cd\BigInstaller\Android\
+
+adb restore backup.ab
+
+echo Echo, pulsa un boton...
+
+pause > nul
+
+goto RICHIESPA
+
+
+:SESPA
+color e9
+echo.
+echo                            Problemas?
+echo.
+echo             Envia una e-Mail a: bigromandroid@gmail.com
+echo.
+echo                           Version 2.0
+echo.
+echo                       # # # # # # # # # # #
+echo.
+echo                       #  Muchas gracias!  #
+echo.
+echo                       # # # # # # # # # # #
+echo.
+echo Pulsa un boton...
+pause > nul
+
+goto RICHIESPA
+
+
+
+
+
+
+:SETTSPA
+color e2
+
+echo.
+
+echo Hola! :)
+echo.
+
+echo Pulsa un boton...
+
+pause > nul
+
+exit 
+
+
+cls
+
+:MATTEOSPA
+echo Apertura del browser...
+
+start "" "https://plus.google.com/102310425733172749149"
+
+echo Pulsa un boton...
+
+pause > nul
+
+goto RICHIESPA
+
+
+:LUCASPA
+echo Apertura del browser...
+
+start "" "https://plus.google.com/117718648465129136256/posts"
+
+echo Pulsa un boton...
+
+pause > nul
+
+goto RICHIESPA
+
+
+:ARNALDO
+SPA
+echo Apertura del browser...
+
+start "" "https://plus.google.com/100182969998804856383/posts"
+
+echo Pulsa un boton...
+
+pause > nul
+
+goto RICHIESPA
+
+:NICOLASPA
+
+echo Apertura del browser...
+
+start "" "https://plus.google.com/110283931582991364478/posts"
+
+echo Pulsa un boton...
+
+pause > nul
+
+goto RICHIESPA
+
+
+:MORENO
+SPA
+echo Apertura del browser...
+
+start "" "https://plus.google.com/115779171785765882236/posts"
+
+echo Pulsa un boton...
+pause > nul
+
+goto RICHIESPA
+
+:FRANCESCOSPA
+echo Apertura del browser...
+
+start "" "https://plus.google.com/106817200857142105707/posts"
+
+echo Pulsa un boton...
+
+pause > nul
+
+goto RICHIESPA
+
+
+:EASTERIT
+echo.
+echo.
+echo               ,aaadddd8888888bbbbaaa,_                                  
+echo           ,adP"::' 888  "Y8ba,  ```::Y8aa,_
+echo         ,dP"  ::' ,88P    ,88P'   ,::: ``8"Yba,
+echo        ,88'  ,::  d88'   d8P'     :::'  ,P  `)88a,
+echo       ,888   ::'  888   "Y8ba,    :::   d'   d8P`Ya,
+echo      ,888P  ,::  ,88P     ,88P'  ,:::  ,P   ,88'  `Ya,
+echo      8888'  ::'  d88'    d8P'    :::'  d'   d8P   ,::b,
+echo      8888   ::   888    "Y8ba,   :::   8    88'   ::::b
+echo      8888   ::   888      ,88P'  :::   8    88,   ::::P
+echo      8888,  ::,  Y88,    d8P'    :::,  Y,   Y8b   `::P'
+echo      `888b  `::  `88b   "Y8ba,   `:::  `b   `88,  ,d"
+echo       `888   ::,  888     ,88P'   :::   Y,   Y8b,d"
+echo        `88,  `::  Y88,   d8P'     :::,  `b  _)8P"
+echo         `Yb,  ::, `88b  "Y8ba,    `::: _,8adP"
+echo           `"Yb,::, 888    ,88P'  __::adP""'
+echo               `"""YYYY8888888PPPP"""'
+echo.
+echo.
+echo.
+echo Premi un tasto per andare indietro...
+pause > nul
+goto MAIN
+
+
+:EASTERENG
+echo.
+echo.
+echo               ,aaadddd8888888bbbbaaa,_                                  
+echo           ,adP"::' 888  "Y8ba,  ```::Y8aa,_
+echo         ,dP"  ::' ,88P    ,88P'   ,::: ``8"Yba,
+echo        ,88'  ,::  d88'   d8P'     :::'  ,P  `)88a,
+echo       ,888   ::'  888   "Y8ba,    :::   d'   d8P`Ya,
+echo      ,888P  ,::  ,88P     ,88P'  ,:::  ,P   ,88'  `Ya,
+echo      8888'  ::'  d88'    d8P'    :::'  d'   d8P   ,::b,
+echo      8888   ::   888    "Y8ba,   :::   8    88'   ::::b
+echo      8888   ::   888      ,88P'  :::   8    88,   ::::P
+echo      8888,  ::,  Y88,    d8P'    :::,  Y,   Y8b   `::P'
+echo      `888b  `::  `88b   "Y8ba,   `:::  `b   `88,  ,d"
+echo       `888   ::,  888     ,88P'   :::   Y,   Y8b,d"
+echo        `88,  `::  Y88,   d8P'     :::,  `b  _)8P"
+echo         `Yb,  ::, `88b  "Y8ba,    `::: _,8adP"
+echo           `"Yb,::, 888    ,88P'  __::adP""'
+echo               `"""YYYY8888888PPPP"""'
+echo.
+echo.
+echo.
+echo Press a key to go back...
+pause > nul
+goto MAIN
+
+
+
+:EASTERSPA
+echo.
+echo.
+echo               ,aaadddd8888888bbbbaaa,_                                  
+echo           ,adP"::' 888  "Y8ba,  ```::Y8aa,_
+echo         ,dP"  ::' ,88P    ,88P'   ,::: ``8"Yba,
+echo        ,88'  ,::  d88'   d8P'     :::'  ,P  `)88a,
+echo       ,888   ::'  888   "Y8ba,    :::   d'   d8P`Ya,
+echo      ,888P  ,::  ,88P     ,88P'  ,:::  ,P   ,88'  `Ya,
+echo      8888'  ::'  d88'    d8P'    :::'  d'   d8P   ,::b,
+echo      8888   ::   888    "Y8ba,   :::   8    88'   ::::b
+echo      8888   ::   888      ,88P'  :::   8    88,   ::::P
+echo      8888,  ::,  Y88,    d8P'    :::,  Y,   Y8b   `::P'
+echo      `888b  `::  `88b   "Y8ba,   `:::  `b   `88,  ,d"
+echo       `888   ::,  888     ,88P'   :::   Y,   Y8b,d"
+echo        `88,  `::  Y88,   d8P'     :::,  `b  _)8P"
+echo         `Yb,  ::, `88b  "Y8ba,    `::: _,8adP"
+echo           `"Yb,::, 888    ,88P'  __::adP""'
+echo               `"""YYYY8888888PPPP"""'
+echo.
+echo.
+echo.
+echo Pulsa un boton...
+pause > nul
+goto MAIN
+
+
+:README
+echo.
+echo.
+color b4
+type C:\BigInstaller\README.txt
+echo.
+echo Press a key to go back...
+pause > nul
+goto MAIN
+
+
+:EASTEREGGS
+echo.
+echo                 _,,gg,,_                                 _,,gg,,_
+echo              ,a888P88Y888a,                           ,a888P88Y888a,
+echo            ,d"8"8",YY,"8"8"b,                       ,d"8"8",YY,"8"8"b,
+echo           d",P'd' d'`b `b`Y,"b,                    d",P'd' d'`b `b`Y,"b,
+echo         ,P",P',P  8  8  Y,`Y,"Y,                 ,P",P',P  8  8  Y,`Y,"Y,
+echo        ,P ,P' d'  8  8  `b `Y, Y,               ,P ,P' d'  8  8  `b `Y, Y,
+echo       ,P ,P_,,8ggg8gg8ggg8,,_Y, Y,             ,P ,P_,,8ggg8gg8ggg8,,_Y, Y,
+echo      ,8P"""""""''      ``"""""""Y8,           ,8P"""""""''      ``"""""""Y8,
+echo      d'/~\    /~\    /~\    /~\  `b           d' ,a8a,    /\ /\    ,a8a,  `b
+echo      8/   \  /   \  /   \  /   \  8           8 ,P" "Y,    ( )    ,P" "Y,  8
+echo      8 ,8, \/ ,8, \/ ,8, \/ ,8, \/8           8,P'   `Y, .( o ). ,P'   `Y, 8
+echo      8 "Y" /\ "Y" /\ "Y" /\ "Y" /\8           8P'/\ /\`Y,   _   ,P'/\ /\`Y,8
+echo      8\   /  \   /  \   /  \   /  8           8'  ( )  `Y, (_) ,P'  ( )  `Y8
+echo      8 \_/    \_/    \_/    \_/   8           8 .( o ). `Ya   aP' .( o ). `8
+echo      8                            8           8 =-=-=-=   "YaP"   =-=-=-=  8
+echo      Y""""YYYaaaa,,,,,,aaaaPPP""""P           Y""""YYYaaaa,,,,,,aaaaPPP""""P
+echo      `b ag,   ``""""""""''   ,ga d'           `b ag,   ``""""""""''   ,ga d'
+echo       `YP "b,  ,aa,  ,aa,  ,d" YP'             `YP "b,  ,aa,  ,aa,  ,d" YP'
+echo        "Y,_"Ya,_)8  8(_,aP"_,P"                 "Y,_"Ya,_)8  8(_,aP"_,P"
+echo          `"Ya_"""    """_aP"'                     `"Ya_"""    """_aP"'
+echo              `""YYbbddPP""'                           `""YYbbddPP""'
+echo.
+echo Press a key to go back...
+pause > nul
+goto MAIN
